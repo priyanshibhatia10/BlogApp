@@ -1,0 +1,12 @@
+{
+  "parameters":
+  {
+    "secret_key": "83we23djd34edh2443ehddb",
+    "local_server": false,
+    "local_uri":"mysql://root@127.0.0.1/BlogApp",
+    "prod_uri": "postgresql://blogapp_gev6_user:8mf0vnAkyeDUvLtqFRksm06LZsORbmKy@dpg-cl0cipa37rbc7398dkmg-a.oregon-postgres.render.com/blogapp_gev6",
+    "title": "The Wondering Compass",
+    "username": "abc",
+    "password": "2345"
+  }
+}
