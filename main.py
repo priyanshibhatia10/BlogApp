@@ -130,15 +130,20 @@ def profile():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-@login_required
 @app.route("/admin",methods=['GET', 'POST'])
+@login_required
 def dashboard():
-        posts = Posts.query.filter_by().all()
-        contacts = Contact.query.filter_by().all()
-        return render_template("admin/index.html",posts=posts,contacts=contacts)
+    user=current_user.name
+    style=''
+    posts = Posts.query.filter_by(author=user).all()
+    contacts = Contact.query.filter_by().all()
+    if not current_user.username==param['admin']:
+        style='display: none;'
+    return render_template("admin/index.html",posts=posts,contacts=contacts,style=style)
+
 
 @app.route('/editPost/<string:post_id>', methods=['GET', 'POST'])
+@login_required
 def edit(post_id):
     if request.method=='POST':
         ntitle = request.form.get('title')
@@ -173,6 +178,7 @@ def edit(post_id):
     return render_template('admin/editPost.html',param=param,post=post,post_id=post_id)
 
 @app.route('/delete/<string:post_id>', methods=['GET', 'POST'])
+@login_required
 def delete(post_id):
     post = Posts.query.filter_by(post_id=post_id).first()
     db.session.delete(post)
@@ -180,6 +186,7 @@ def delete(post_id):
     return redirect(url_for('dashboard'))
 
 @app.route("/contact",methods=['GET','POST'])
+@login_required
 def contact():
     if (request.method=='POST'):
         Name = request.form.get('name')

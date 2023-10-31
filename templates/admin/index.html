@@ -8,20 +8,21 @@
   </head>
   <body>
   <div class="container"><br><br>
-  <h4>Admin Dashboard</h4><br>
+  <h2>Admin Dashboard</h2>
+    <br>
+    <h5> Welcome {{current_user.name}}!!</h5>
+    <br>
   <p class="d-inline-flex gap-1">
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#Posts" role="button" aria-expanded="false" aria-controls="collapseExample">
     Post
   </a>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#Contact" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a style="{{style}}" class="btn btn-primary" data-bs-toggle="collapse" href="#Contact" role="button" aria-expanded="false" aria-controls="collapseExample">
   Contact
   </a>
     <a class="btn btn-primary"  href="/editPost/0" role="button">
   Add new Post
   </a>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false" aria-controls="collapseExample">
-  Logout
-  </a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
 </p>
 
   <div class="collapse" id="Posts">
