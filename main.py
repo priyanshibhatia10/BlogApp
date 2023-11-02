@@ -120,11 +120,6 @@ def login():
     return render_template("login.html",param=param)
 
 
-@app.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html', pram=param,name=current_user.name)
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -140,7 +135,6 @@ def dashboard():
     if not current_user.username==param['admin']:
         style='display: none;'
     return render_template("admin/index.html",posts=posts,contacts=contacts,style=style)
-
 
 @app.route('/editPost/<string:post_id>', methods=['GET', 'POST'])
 @login_required
@@ -186,7 +180,6 @@ def delete(post_id):
     return redirect(url_for('dashboard'))
 
 @app.route("/contact",methods=['GET','POST'])
-@login_required
 def contact():
     if (request.method=='POST'):
         Name = request.form.get('name')
