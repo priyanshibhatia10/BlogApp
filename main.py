@@ -142,7 +142,7 @@ def edit(post_id):
     if request.method=='POST':
         ntitle = request.form.get('title')
         nsubtitle = request.form.get('subtitle')
-        nauthor = request.form.get('author')
+        nauthor = current_user.name
         nimage = request.form.get('image')
         nlocation = request.form.get('location')
         nslug = request.form.get('slug')
